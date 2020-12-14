@@ -52,9 +52,8 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if ((value2 + value1) > 0) {
-    return (value2 + value1) / 2;
-  } return 0;
+  if (value1 === Number.MAX_VALUE && value2 === Number.MAX_VALUE) return Number.MAX_VALUE;
+  return (value1 + value2) / 2;
 }
 
 /**
@@ -190,14 +189,8 @@ function getParallelipidedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 // eslint-disable-next-line consistent-return
-function roundToPowerOfTen(num, pow) {
-  // eslint-disable-next-line default-case
-  switch (pow) {
-    case 0: return num;
-    case 1: return ((Math.floor(num / 10)) * 10);
-    case 2: return ((Math.floor(num / 100)) * 100);
-    case 3: return ((Math.floor(num / 1000)) * 1000);
-  }
+function roundToPowerOfTen(/* num, pow */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -217,8 +210,19 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let iter = 0;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i <= n; i++) {
+    if (n % i === 0) {
+      // eslint-disable-next-line no-plusplus
+      iter++;
+    }
+  }
+  if (iter > 2) {
+    return false;
+  }
+  return true;
 }
 
 /**

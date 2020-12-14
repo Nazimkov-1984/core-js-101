@@ -210,7 +210,7 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(/* width, height */) {
-
+  throw new Error('Not implemented');
 }
 
 
@@ -234,7 +234,7 @@ function encodeToRot13(str) {
   const position = {
     a: 1,
     b: 2,
-    с: 3,
+    c: 3,
     d: 4,
     e: 5,
     f: 6,
@@ -315,8 +315,16 @@ function encodeToRot13(str) {
       // eslint-disable-next-line operator-assignment
       indexLetter[i] = indexLetter[i] - 13;
     }
-
-    result += getKeyByValue(position, indexLetter[i]);
+    // eslint-disable-next-line quotes
+    if (massLeter[i] === " ") {
+      result += '';
+    }
+    // eslint-disable-next-line eqeqeq
+    if (getKeyByValue(position, indexLetter[i]) == undefined) {
+      result += massLeter[i];
+    } else {
+      result += getKeyByValue(position, indexLetter[i]);
+    }
   }
   return result;
 }
